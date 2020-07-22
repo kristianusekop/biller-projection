@@ -36,8 +36,8 @@ krkcon <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                          host = "airavata.cn26rqn0gh39.ap-southeast-1.rds.amazonaws.com",   
                          port = 5432,   
                          dbname = "sepulsa_reporting",   
-                         user = "eko",   
-                         password = "p3Payag4nTUn6" )
+                         user = Sys.getenv('airavatauserid'),   
+                         password = Sys.getenv('airavatapassword') )
 
 dompulCodeQuery<-dbSendQuery(krkcon,
                              "select code as dompulCode,
@@ -291,7 +291,7 @@ Axiata9995ts<-tsclean(Axiata9995ts)
 library(TTR)
 library(forecast)
 #Axiata4820SMA2<-HoltWinters(log(Axiata4820ts))
-Axiata7214SMA2<-HoltWinters(Axiata7214ts,alpha=NULL,beta=NULL,gamma=TRUE,seasonal="multiplicative",l.start=NULL,b.start=NULL,s.start=NULL,optim.start=c(alpha = 0.2, beta = 0.1, gamma = 0.1),optim.control=list())
+Axiata7214SMA2<-HoltWinters(Axiata7214ts,alpha=TRUE,beta=NULL,gamma=TRUE,seasonal="multiplicative",l.start=NULL,b.start=NULL,s.start=NULL,optim.start=c(alpha = 0.2, beta = 0.1, gamma = 0.1),optim.control=list())
 
 Axiata7215SMA2<-HoltWinters(log(Axiata7215ts),alpha=TRUE,beta=NULL,gamma=TRUE,seasonal="multiplicative",l.start=NULL,b.start=NULL,s.start=NULL,optim.start=c(alpha = 0.2, beta = 0.1, gamma = 0.1),optim.control=list())
 
@@ -601,8 +601,8 @@ krkcon <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                          host = "airavata.cn26rqn0gh39.ap-southeast-1.rds.amazonaws.com",   
                          port = 5432,   
                          dbname = "sepulsa_reporting",   
-                         user = "eko",   
-                         password = "p3Payag4nTUn6" )
+                         user = Sys.getenv('airavatauserid'),   
+                         password = Sys.getenv('airavatapassword') )
 
 billerInventoryLatestQuery<-dbSendQuery(krkcon,";with cteRowNumber as (
     select biller as operator,partner_id as partnerid,dompul_code as billermessage,deposit as deposit,created_at as createdat,
@@ -641,8 +641,8 @@ krkcon <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                          host = "airavata.cn26rqn0gh39.ap-southeast-1.rds.amazonaws.com",   
                          port = 5432,   
                          dbname = "sepulsa_reporting",   
-                         user = "eko",   
-                         password = "p3Payag4nTUn6" )
+                         user = Sys.getenv('airavatauserid'),   
+                         password = Sys.getenv('airavatapassword') )
 
 billerIDQuery<-dbSendQuery(krkcon,
                            "select name as biller,
@@ -675,8 +675,8 @@ con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                       host = "trxhourly.cmqarwvv5fja.us-east-1.rds.amazonaws.com",   
                       port = 5432,   
                       dbname = "postgres",   
-                      user = "postgres",   
-                      password = "ap3Lmerahm4ni5" )
+                      user = Sys.getenv('projdbuser'),   
+                      password = Sys.getenv('projdbpass') )
 
 maxIdQuery<-dbSendQuery(con,"select max(id) from public.billerdeposit")
 
@@ -711,8 +711,8 @@ con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                       host = "trxhourly.cmqarwvv5fja.us-east-1.rds.amazonaws.com",   
                       port = 5432,   
                       dbname = "postgres",   
-                      user = "postgres",   
-                      password = "ap3Lmerahm4ni5" )
+                      user = Sys.getenv('projdbuser'),   
+                      password = Sys.getenv('projdbpass') )
 
 minDateQuery<-dbSendQuery(con,"select min(date) as min, max(date) as max from public.billerdeposit")
 
@@ -758,8 +758,8 @@ con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                       host = "trxhourly.cmqarwvv5fja.us-east-1.rds.amazonaws.com",   
                       port = 5432,   
                       dbname = "postgres",   
-                      user = "postgres",   
-                      password = "ap3Lmerahm4ni5" )
+                      user = Sys.getenv('projdbuser'),   
+                      password = Sys.getenv('projdbpass') )
 
 maxIdHQuery<-dbSendQuery(con,"select max(id) from public.transactionhistory")
 
@@ -782,8 +782,8 @@ con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                       host = "trxhourly.cmqarwvv5fja.us-east-1.rds.amazonaws.com",   
                       port = 5432,   
                       dbname = "postgres",   
-                      user = "postgres",   
-                      password = "ap3Lmerahm4ni5" )
+                      user = Sys.getenv('projdbuser'),   
+                      password = Sys.getenv('projdbpass') )
 
 #dbWriteTable(con,"transactionhistory",value=telcoHistDAxiata,overwrite=T,append=F,row.names=FALSE)
 db_insert_into(con,"transactionhistory",value=telcoHistDAxiata)
