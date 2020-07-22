@@ -1,12 +1,13 @@
 # biller-projection
 biller deposit projection service
 
-service to predict deposit requirement for deposit type billers in Alterra.
+service to predict deposit requirement for deposit-type billers in Alterra.
  
  PIC: Kristianus Eko
  
-Requirements
+**Requirements**
  R v 3.6.3
+     
     dplyr
     data.table
     dbplyr
@@ -18,4 +19,7 @@ Requirements
     tableHTML
     rJava
     mailR
+
+
+
 
