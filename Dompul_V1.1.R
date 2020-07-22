@@ -291,7 +291,7 @@ Axiata9995ts<-tsclean(Axiata9995ts)
 library(TTR)
 library(forecast)
 #Axiata4820SMA2<-HoltWinters(log(Axiata4820ts))
-Axiata7214SMA2<-HoltWinters(Axiata7214ts,alpha=TRUE,beta=NULL,gamma=TRUE,seasonal="multiplicative",l.start=NULL,b.start=NULL,s.start=NULL,optim.start=c(alpha = 0.2, beta = 0.1, gamma = 0.1),optim.control=list())
+Axiata7214SMA2<-HoltWinters(Axiata7214ts,alpha=NULL,beta=NULL,gamma=TRUE,seasonal="multiplicative",l.start=NULL,b.start=NULL,s.start=NULL,optim.start=c(alpha = 0.2, beta = 0.1, gamma = 0.1),optim.control=list())
 
 Axiata7215SMA2<-HoltWinters(log(Axiata7215ts),alpha=TRUE,beta=NULL,gamma=TRUE,seasonal="multiplicative",l.start=NULL,b.start=NULL,s.start=NULL,optim.start=c(alpha = 0.2, beta = 0.1, gamma = 0.1),optim.control=list())
 
